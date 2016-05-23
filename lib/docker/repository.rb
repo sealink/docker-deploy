@@ -6,14 +6,15 @@ module Docker
 
     def version!
       super
-      data_hash = JSON.parse(File.read('Dockerrun.aws.json'))
-      a = data_hash['Image']['Name']
-      b = a.sub(/:.*/, '')
-      c = "#{b}:#{@tag}"
-      data_hash['Image']['Name'] = c
-      d = JSON.pretty_generate(data_hash)
-      File.open('Dockerrun.aws.json', 'w') do |f|
-        f.write d
+      File.open('Dockerrun.aws.json', 'r+') do |file|
+        data_hash = JSON.parse(file.read)
+        a = data_hash['Image']['Name']
+        b = a.sub(/:.*/, '')
+        c = "#{b}:#{@tag}"
+        data_hash['Image']['Name'] = c
+        d = JSON.pretty_generate(data_hash)
+        file.rewind
+        file.write d
       end
     end
 
