@@ -14,6 +14,7 @@ module Docker
 
       def precheck!
         check_for_unstaged_changes!
+        check_for_changelog!
       end
 
       def perform!
