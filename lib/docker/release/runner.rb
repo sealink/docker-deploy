@@ -1,5 +1,6 @@
 require 'deploy'
 require 'docker/release/repository'
+require 'docker/release/dockerrun/validate'
 
 module Docker
   module Release
@@ -7,6 +8,7 @@ module Docker
       def run
         trap_int
         precheck!
+        validate!
         perform!
       end
 
@@ -15,6 +17,10 @@ module Docker
       def precheck!
         check_for_unstaged_changes!
         check_for_changelog!
+      end
+
+      def validate!
+        Dockerrun::Validate.instance.call
       end
 
       def perform!

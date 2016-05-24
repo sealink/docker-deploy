@@ -1,6 +1,9 @@
 module Docker
   module Release
     class TagDockerrun
+      
+      FILE_NAME = 'Dockerrun.aws.json'
+
       def initialize(new_tag)
         @new_tag = new_tag
       end
@@ -17,7 +20,7 @@ module Docker
       attr_reader :file, :original_json
 
       def open
-        @file ||= File.open('Dockerrun.aws.json', 'r+')
+        @file ||= File.open(FILE_NAME, 'r+')
       end
 
       def read
