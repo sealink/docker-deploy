@@ -19,6 +19,12 @@ module Docker
 
       def perform!
         synchronize_repo!
+        log 'The new release has been pushed.'
+      end
+
+      def synchronize_repo!
+        log 'Preparing the tagged version for release.'
+        repo.prepare! @tag
       end
 
       def repo
