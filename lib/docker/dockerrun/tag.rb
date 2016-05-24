@@ -1,9 +1,8 @@
-module Docker
-  module Release
-    class TagDockerrun
-      
-      FILE_NAME = 'Dockerrun.aws.json'
+require 'docker/dockerrun'
 
+module Docker
+  module Dockerrun
+    class Tag
       def initialize(new_tag)
         @new_tag = new_tag
       end
