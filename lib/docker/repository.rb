@@ -1,21 +1,17 @@
 require 'deploy/repository'
+require 'docker/release/tag_dockerrun'
 
 module Docker
   class Repository < ::Deploy::Repository
     private
 
+    def tag_dockerrun!
+      Release::TagDockerrun.new(@tag).call
+    end
+
     def version!
       super
-      File.open('Dockerrun.aws.json', 'r+') do |file|
-        data_hash = JSON.parse(file.read)
-        a = data_hash['Image']['Name']
-        b = a.sub(/:.*/, '')
-        c = "#{b}:#{@tag}"
-        data_hash['Image']['Name'] = c
-        d = JSON.pretty_generate(data_hash)
-        file.rewind
-        file.write d
-      end
+      tag_dockerrun!
     end
 
     def commit!
