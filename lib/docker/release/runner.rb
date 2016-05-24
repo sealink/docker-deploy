@@ -1,5 +1,5 @@
 require 'deploy'
-require 'docker/repository'
+require 'docker/release/repository'
 
 module Docker
   module Release
@@ -22,7 +22,7 @@ module Docker
       end
 
       def repo
-        @repo ||= Docker::Repository.new
+        @repo ||= Repository.new
       end
     end
   end
