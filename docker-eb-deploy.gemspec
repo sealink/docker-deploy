@@ -5,14 +5,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'docker/deploy/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'docker-deploy'
+  spec.name          = 'docker-eb-deploy'
   spec.version       = Docker::Deploy::VERSION
   spec.authors       = [ 'Alvin Yim' ]
   spec.email         = [ 'alvin.yim@sealink.com.au' ]
 
   spec.summary       = 'Tag the Git repo for Docker Hub to build the image'
-  spec.description   = 'Tag the Git repo for Docker Hub to build the image'
-  spec.homepage      = 'https://github.com/sealink/docker-deploy'
+  spec.description   = 'Tag the Git repo for Docker Hub to build the image for Elastic Beanstalk'
+  spec.homepage      = 'https://github.com/sealink/docker-eb-deploy'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match %r{^(test|spec|features)/} }
@@ -22,4 +22,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = [ 'lib' ]
 
   spec.add_dependency 'deploy_aws', '~> 0.1.0'
+
+  spec.add_development_dependency 'rspec', '~> 3.4.0'
 end
