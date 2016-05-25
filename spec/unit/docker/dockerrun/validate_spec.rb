@@ -15,7 +15,7 @@ describe Docker::Dockerrun::Validate do
   end
 
   context 'In the happy path' do
-    it 'executes unevenfully' do
+    it 'executes uneventfully' do
       expect { subject.call }.not_to raise_error
     end
   end

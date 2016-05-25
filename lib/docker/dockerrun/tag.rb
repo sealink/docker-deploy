@@ -1,4 +1,5 @@
 require 'docker/dockerrun'
+require 'json'
 
 module Docker
   module Dockerrun
@@ -31,11 +32,11 @@ module Docker
       end
 
       def original_image_value
-        original_hash.fetch 'Image'
+        original_hash.fetch 'Image', { }
       end
 
       def original_name_value
-        original_image_value.fetch 'Name'
+        original_image_value.fetch 'Name', ''
       end
 
       def name_without_tag
