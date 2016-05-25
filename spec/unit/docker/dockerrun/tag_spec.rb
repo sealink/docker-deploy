@@ -11,7 +11,7 @@ describe Docker::Dockerrun::Tag do
     allow(File).to receive(:open).and_return(file)
   end
 
-  context 'In the happy path' do
+  context 'in the happy path' do
     it 'executes uneventfully' do
       expect { subject.call }.not_to raise_error
       expect(file).to have_received(:rewind)

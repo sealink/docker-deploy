@@ -14,7 +14,7 @@ describe Docker::Dockerrun::Validate do
     allow(subject).to receive(:parsability).and_call_original
   end
 
-  context 'In the happy path' do
+  context 'in the happy path' do
     it 'executes uneventfully' do
       expect { subject.call }.not_to raise_error
     end
