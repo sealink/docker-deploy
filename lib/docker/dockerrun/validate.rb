@@ -1,3 +1,5 @@
+require 'singleton'
+require 'json'
 require 'docker/dockerrun'
 require 'docker/dockerrun/tag'
 
@@ -20,7 +22,11 @@ module Docker
       def parsability
         JSON.parse File.read(FILE_NAME)
       rescue JSON::ParserError => error
-        abort "{#{FILE_NAME} is not parsable: #{error.message}"
+        abort "#{FILE_NAME} is not parsable: #{error.message}"
+      end
+
+      def abort(message)
+        Kernel.abort message
       end
     end
   end
