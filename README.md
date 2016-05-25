@@ -24,7 +24,8 @@ that contains the Dockerrun.aws.json file.
 
 Bundler is recommended for managing the development dependencies.
 
-Rspec tests are located in the `spec` directory.
+Rspec tests are located in the `spec` directory.  Just run `rspec` in the root
+directory of the project to run all the bundled specs.
 
 ## Contributing
 
