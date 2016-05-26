@@ -8,7 +8,7 @@ Docker Hub.
 
 1. Update the version in `public/version.txt`
 
-1. Update the version tag of the image nane in `Dockerrun.aws.json`
+1. Update the version tag of the image name in `Dockerrun.aws.json`
 
 1. Push to the updated branch and the tag as the version to origin
 
