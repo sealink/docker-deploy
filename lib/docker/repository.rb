@@ -21,5 +21,9 @@ module Docker
         fail 'Failed to commit.'
       end
     end
+
+    def commit_message
+      @commit_message ||= "#{last_commit_message} - release"
+    end
   end
 end
