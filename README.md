@@ -6,6 +6,12 @@ Docker images built automatically by Docker Hub or another third party service.
 Currently it allows you to create a release and trigger the build automation in
 Docker Hub.
 
+1. Update the version in `public/version.txt`
+
+1. Update the version tag of the image nane in `Dockerrun.aws.json`
+
+1. Push to the updated branch and the tag as the version to origin
+
 ## Installation
 
 For multiple application usage, install the gem directly (in the global gem
