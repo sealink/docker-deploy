@@ -1,2 +1,23 @@
 #!/usr/bin/env ruby
-raise NotImplementedError
+require 'pathname'
+
+THIS_FILE = Pathname.new(__FILE__).realpath
+lib = THIS_FILE.dirname.parent + 'lib'
+
+if lib.directory?
+  lib_path = lib.to_s
+  $LOAD_PATH.unshift lib_path if !$LOAD_PATH.include? lib_path
+end
+
+require 'docker/release/runner'
+
+tag = ARGV[0]
+# Demand correct invocation, one argument only for tag, clean git, changelog
+if tag.nil?
+  abort "USAGE:
+        #{File.basename($0)} [TAG]
+        TAG: tag to deploy or create on current commit
+        Incorrect number of arguments given."
+end
+deployment = Docker::Release::Runner.new(tag)
+deployment.run
