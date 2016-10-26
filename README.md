@@ -23,7 +23,7 @@ gem install docker-eb-deploy
 
 ## Usage
 
-Execute `docker-release` in your project directory
+Execute `docker-release tag-name` in your project directory
 that contains the Dockerrun.aws.json file.
 
 ## Development
